@@ -1,5 +1,6 @@
 using namespace Microsoft.IdentityModel.Clients.ActiveDirectory
 Add-Type -Path .\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+# https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/
 
 $TenantId = ''
 $ClientId = ''
