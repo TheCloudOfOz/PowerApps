@@ -1,6 +1,10 @@
+# .NET 3.1 and .NET 5 SDK must be installed
+# PowerShell v7.1.4 minimum must be installed
+# https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/
+
 using namespace Microsoft.IdentityModel.Clients.ActiveDirectory
 Add-Type -Path .\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
-# https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/
+
 
 $TenantId = ''
 $ClientId = ''
