@@ -1,10 +1,10 @@
 using namespace Microsoft.IdentityModel.Clients.ActiveDirectory
 Add-Type -Path .\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 
-$TenantId = '2870cf6a-e96c-4903-ab50-878ba4170eee'
-$ClientId = '39e1c0c5-75a1-42c5-9325-ecf58f635a40'
-$ClientSecret = '10t7Q~Bga.nAejWpDsjqrZE07uwf2qpCf0ptY'
-$Resource = 'https://sozdev.crm.dynamics.com'
+$TenantId = ''
+$ClientId = ''
+$ClientSecret = ''
+$Resource = 'https://<org>.crm.dynamics.com'
 $TenantUrl = "https://login.microsoftonline.com/$TenantId"
 
 $Context = [AuthenticationContext]::new($TenantUrl)
@@ -13,13 +13,13 @@ $Result = $Context.AcquireTokenAsync($Resource, $ClientCredential).Result
 $Result.AccessToken
 
 $REST = @{
-    Uri     = 'https://sozdev.api.crm.dynamics.com/api/data/v9.2/accounts?$select=name'
+    Uri     = 'https://<org>.api.crm.dynamics.com/api/data/v9.2/accounts?$select=name'
     Method  = 'Get'
     Headers = @{ Authorization = "Bearer $($Result.AccessToken)" }
 }
 (Invoke-RestMethod @REST).value | Format-Table
 
-$Api = [Uri]::new('https://sozdev.api.crm.dynamics.com/api/data/v9.2/')
+$Api = [Uri]::new('https://<org>.api.crm.dynamics.com/api/data/v9.2/')
 $Headers = @{
     #CallerObjectId = ""
     Authorization = "Bearer $($Result.AccessToken)" 
